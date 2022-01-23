@@ -46,11 +46,9 @@ class s3Connect:
             bucket -- bucket name
         """
         logger.info('Uploading file key {} to Cloud ...'.format(file_key))
-        buck = self.conn.Bucket(bucket)
         try:
-            buck.put_object(
-                Key=file_key,
-                Body=open(media_location, 'rb'))
+            s3 = boto3.client('s3')
+            s3.upload_file(media_location, bucket, file_key)
             logger.info('Uploaded file key {}.'.format(file_key))
         except Exception as e:
             logger.info('Error: ', e)
