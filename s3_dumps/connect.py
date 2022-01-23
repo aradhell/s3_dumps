@@ -21,12 +21,8 @@ class s3Connect:
         self.service_name = service_name
 
         if service_name == 'amazon':
-            aws_base_url = 'https://s3.amazonaws.com'
             self.conn = boto3.resource('s3',
-                                       region_name=region,
-                                       endpoint_url=aws_base_url,
-                                       aws_access_key_id=access_key_id,
-                                       aws_secret_access_key=secret_access_key)
+                                       region_name=region)
         elif self.service_name == 'digitalocean':
             do_base_url = 'https://%s.%s' % (region, 'digitaloceanspaces.com')
             self.conn = boto3.resource('s3',
