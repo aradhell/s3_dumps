@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 from datetime import datetime
 from s3_dumps.connect import s3Connect
@@ -64,7 +64,7 @@ def backup():
     )
 
     if DELETE_DUMP:
-        os.remove(file_location)
+       #os.remove(file_location)
         os.remove(DUMP_BASE_DIR + filename + '.sql')
         logger.info('''Removed the dump from local directory ({}, {}).'''.format(
             DUMP_BASE_DIR + filename + '.sql', file_location))
